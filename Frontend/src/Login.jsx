@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 
-const API = "http://localhost:5000/api/auth";
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api/auth";
 
 function Login() {
   const [email, setEmail] = useState("");
