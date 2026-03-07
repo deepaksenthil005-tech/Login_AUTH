@@ -5,6 +5,7 @@ import "./App.css";
 const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api/auth";
 
 function Register() {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("User");
@@ -15,7 +16,7 @@ function Register() {
     const res = await fetch(`${API}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, role })
+      body: JSON.stringify({ username, email, password, role })
     });
 
     const data = await res.json();
@@ -30,6 +31,12 @@ function Register() {
   return (
     <div className="container">
       <h2>Register</h2>
+
+      <input
+        type="text"
+        placeholder="Username"
+        onChange={(e) => setUsername(e.target.value)}
+      />
 
       <input
         type="email"

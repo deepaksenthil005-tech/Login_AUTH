@@ -22,6 +22,7 @@ function Login() {
     if (res.ok) {
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
+      if (data.username) localStorage.setItem("username", data.username);
       navigate("/home");
     } else {
       setMessage(data.message);

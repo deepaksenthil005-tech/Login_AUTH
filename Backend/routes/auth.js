@@ -8,13 +8,21 @@ const JWT_SECRET = "your_jwt_secret"; // Change this in production
 
 // Register
 router.post("/register", async (req, res) => {
-  const { email, password, role } = req.body;
+  const { username, email, password, role } = req.body;
   try {
+    if (!username || !String(username).trim()) {
+      return res.status(400).json({ message: "Username is required" });
+    }
     const existingUser = await User.findOne({ email });
     if (existingUser)
       return res.status(400).json({ message: "User already exists" });
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ email, password: hashedPassword, role });
+    const user = new User({
+      username: String(username).trim(),
+      email,
+      password: hashedPassword,
+      role,
+    });
     await user.save();
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
@@ -38,6 +46,7 @@ router.post("/login", async (req, res) => {
       message: "Login successful",
       token: token,
       role: user.role,
+      username: user.username,
     });
   } catch (err) {
     res.status(500).json({ message: "Server error" });
