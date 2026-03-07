@@ -1,0 +1,106 @@
+/* Background */
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #4e73df, #3effb8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+* {
+  font-family: "Times New Roman", Times, serif;
+  font-variant: small-caps;
+}
+
+/* Main Card */
+.container {
+  background: white;
+  padding: 40px;
+  width: 600px;
+  height: 50vh;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* Heading */
+.container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Inputs */
+.container input,
+.container select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+}
+
+.container input:focus,
+.container select:focus {
+  border-color: #0543ff;
+}
+
+/* Buttons */
+.container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #0040ff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.container button:hover {
+  background: #0031c6;
+}
+
+/* Switch Button */
+.switch-btn {
+  background: transparent;
+  color: #002eb6;
+  margin-top: 15px;
+}
+
+.switch-btn:hover {
+  text-decoration: underline;
+  background: transparent;
+}
+
+/* Message */
+.message {
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+}
+
+/* Users List */
+.users {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 250px;
+    padding: 20px;
+  }
+  .container input,
+  .container select {
+    width: 90%;
+  }
+}
