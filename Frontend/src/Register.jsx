@@ -60,10 +60,10 @@ function Register() {
       />
 
       <input
-        type="file"
-        placeholder="Upload Photo"
+        type="url"
+        placeholder="Photo URL (optional)"
         value={photo}
-        onChange={(e) => setPhoto(URL.createObjectURL(e.target.files[0]))}
+        onChange={(e) => setPhoto(e.target.value)}
       />
 
       {photo ? (
