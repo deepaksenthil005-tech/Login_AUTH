@@ -11,6 +11,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    setMessage("");
     const res = await fetch(`${API}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -23,6 +24,7 @@ function Login() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
       if (data.username) localStorage.setItem("username", data.username);
+      if (data.photo) localStorage.setItem("photo", data.photo);
       navigate("/home");
     } else {
       setMessage(data.message);
@@ -36,12 +38,14 @@ function Login() {
       <input
         type="email"
         placeholder="Email"
+        value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
 
       <input
         type="password"
         placeholder="Password"
+        value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
 

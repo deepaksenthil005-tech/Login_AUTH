@@ -8,15 +8,21 @@ function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [photo, setPhoto] = useState("");
   const [role, setRole] = useState("User");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async () => {
+    setMessage("");
+    if (!username.trim()) return setMessage("Username is required");
+    if (!email.trim()) return setMessage("Email is required");
+    if (!password) return setMessage("Password is required");
+
     const res = await fetch(`${API}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password, role })
+      body: JSON.stringify({ username, email, password, role, photo })
     });
 
     const data = await res.json();
@@ -35,22 +41,38 @@ function Register() {
       <input
         type="text"
         placeholder="Username"
+        value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
 
       <input
         type="email"
         placeholder="Email"
+        value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
 
       <input
         type="password"
         placeholder="Password"
+        value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <select onChange={(e) => setRole(e.target.value)}>
+      <input
+        type="file"
+        placeholder="Upload Photo"
+        value={photo}
+        onChange={(e) => setPhoto(URL.createObjectURL(e.target.files[0]))}
+      />
+
+      {photo ? (
+        <div className="avatar-wrap">
+          <img className="avatar" src={photo} alt="Profile preview" />
+        </div>
+      ) : null}
+
+      <select value={role} onChange={(e) => setRole(e.target.value)}>
         <option value="User">User</option>
         <option value="Admin">Admin</option>
       </select>

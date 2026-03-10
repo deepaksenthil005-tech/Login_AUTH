@@ -83,6 +83,21 @@ body {
   color: green;
 }
 
+/* Avatar */
+.avatar-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 0;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid #e6e6e6;
+}
+
 /* Users List */
 .users {
   margin-top: 20px;
