@@ -20,7 +20,10 @@ function Home() {
         <div className="avatar-wrap">
           <img className="avatar" src={photo} alt="Profile" />
         </div>
-      ) : null}
+      ) :
+        <div className="avatar-wrap">
+          <img className="avatar" src="https://static.vecteezy.com/system/resources/previews/021/548/095/original/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg" alt="Profile" />
+        </div>}
       {username ? <h3>Hi, {username}</h3> : null}
       <h3>Your Role: {role}</h3>
       <button onClick={handleLogout}>Logout</button>
