@@ -60,8 +60,7 @@ function Register() {
       />
 
       <input
-        type="url"
-        placeholder="Photo URL (optional)"
+        type="file"
         value={photo}
         onChange={(e) => setPhoto(e.target.value)}
       />
