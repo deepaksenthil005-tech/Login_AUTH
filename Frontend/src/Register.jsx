@@ -22,13 +22,13 @@ function Register() {
     const res = await fetch(`${API}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password, role, photo })
+      body: JSON.stringify({ username, email, password, role, photo }),
     });
 
     const data = await res.json();
 
     if (res.ok) {
-      navigate("/"); 
+      navigate("/");
     } else {
       setMessage(data.message);
     }
@@ -61,8 +61,12 @@ function Register() {
 
       <input
         type="file"
-        value={photo}
-        onChange={(e) => setPhoto(e.target.value)}
+        onChange={(e) => {
+          const file = e.target.files[0];
+          if (file) {
+            setPhoto(URL.createObjectURL(file));
+          }
+        }}
       />
 
       {photo ? (
